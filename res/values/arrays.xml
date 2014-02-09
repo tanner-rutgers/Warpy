@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="image_selection" >
+        <item>@string/load_image</item>
+        <item>@string/take_picture</item>
+    </string-array>
+</resources>
