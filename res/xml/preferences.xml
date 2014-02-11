@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <ca.tannerrutgers.ImageWarp.dialogs.MaskSizePreference
+    <ca.tannerrutgers.Warpy.dialogs.MaskSizePreference
         android:key="pref_mask_size"
         android:title="temp"
         android:defaultValue=""/>

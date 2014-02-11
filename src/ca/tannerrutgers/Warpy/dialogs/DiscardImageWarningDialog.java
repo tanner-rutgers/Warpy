@@ -1,4 +1,4 @@
-package ca.tannerrutgers.ImageWarp.dialogs;
+package ca.tannerrutgers.Warpy.dialogs;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -6,7 +6,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import ca.tannerrutgers.ImageWarp.R;
+import ca.tannerrutgers.Warpy.R;
 
 /**
  * Created by Tanner on 2/9/14.

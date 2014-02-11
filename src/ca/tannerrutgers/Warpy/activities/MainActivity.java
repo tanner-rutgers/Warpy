@@ -1,4 +1,4 @@
-package ca.tannerrutgers.ImageWarp.activities;
+package ca.tannerrutgers.Warpy.activities;
 
 import android.app.Activity;
 import android.app.DialogFragment;
@@ -11,14 +11,12 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.*;
 import android.widget.ImageView;
-import ca.tannerrutgers.ImageWarp.R;
-import ca.tannerrutgers.ImageWarp.dialogs.DiscardImageWarningDialog;
-import ca.tannerrutgers.ImageWarp.listeners.WarpGestureListener;
-import ca.tannerrutgers.ImageWarp.tasks.SaveImageTask;
+import ca.tannerrutgers.Warpy.R;
+import ca.tannerrutgers.Warpy.dialogs.DiscardImageWarningDialog;
+import ca.tannerrutgers.Warpy.listeners.WarpGestureListener;
+import ca.tannerrutgers.Warpy.tasks.SaveImageTask;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -26,7 +24,7 @@ import java.util.Date;
 
 public class MainActivity extends Activity implements DiscardImageWarningDialog.DiscardImageWarningDialogListener {
 
-    public static final String APP_TAG = "Warpy";
+    private static final String APP_TAG = "Warpy";
 
     private static final int REQUEST_LOAD_IMAGE = 0;
     private static final int REQUEST_TAKE_PICTURE = 1;
@@ -39,9 +37,8 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
 
     // View items
     private ImageView mImageView;
-
-    // ASyncTask used for filtering
-//    private FilterTask filterTask;
+    private GestureDetector mGestureDetector;
+    private ScaleGestureDetector mScaleGestureDetector;
 
     /**
      * Called when the activity is first created
@@ -54,16 +51,22 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
         // Set default values if first time launching
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
-        // Retrieve saved mask size
-//        selectedMaskSize = PreferenceManager.getDefaultSharedPreferences(this).getInt("pref_mask_size",ImageFilter.SIZE_DEFAULT);
-
         // Initialize state
         mIsCurrentImageSaved = false;
         mIsImageLoaded = false;
 
         // Initialize views
         mImageView = (ImageView)findViewById(R.id.imageView);
-        mImageView.setOnTouchListener(new WarpGestureListener());
+        WarpGestureListener listener = new WarpGestureListener(this);
+        mGestureDetector = new GestureDetector(this, listener);
+        mScaleGestureDetector = new ScaleGestureDetector(this, listener);
+        mImageView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent me) {
+                boolean returnVal = mScaleGestureDetector.onTouchEvent(me);
+                return mGestureDetector.onTouchEvent(me) || returnVal;
+            }
+        });
     }
 
 //    /**
@@ -313,22 +316,6 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
         return image;
     }
 
-
-
-//    /**
-//     * Returns the Bitmap located at the location filepath
-//     * scaled down to the image view's resolution if needed
-//     * @param filepath Path of original bitmap
-//     * @return Scaled down Bitmap
-//     */
-//    private Bitmap getScaledBitmapFromFilepath(String filepath) {
-//
-//        int viewWidth = mImageView.getWidth();
-//        int viewHeight = mImageView.getHeight();
-//
-//        return BitmapUtils.decodeSampledBitmapFromFilepath(filepath, viewWidth, viewHeight);
-//    }
-
     /**
      * Set primary image view to passed image
      */
@@ -340,5 +327,9 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
             mIsCurrentImageSaved = false;
             invalidateOptionsMenu();
         }
+    }
+
+    public void debugLog(String message) {
+        Log.d(APP_TAG, message);
     }
 }

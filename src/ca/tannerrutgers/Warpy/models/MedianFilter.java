@@ -1,8 +1,8 @@
-package ca.tannerrutgers.ImageWarp.models;
+package ca.tannerrutgers.Warpy.models;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import ca.tannerrutgers.ImageWarp.utils.BitmapUtils;
+import ca.tannerrutgers.Warpy.utils.BitmapUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package ca.tannerrutgers.ImageWarp.models;
+package ca.tannerrutgers.Warpy.models;
 
 import android.graphics.Bitmap;
 

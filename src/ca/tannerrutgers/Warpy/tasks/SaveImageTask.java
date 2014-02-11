@@ -1,4 +1,4 @@
-package ca.tannerrutgers.ImageWarp.tasks;
+package ca.tannerrutgers.Warpy.tasks;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -8,7 +8,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
-import ca.tannerrutgers.ImageWarp.R;
+import ca.tannerrutgers.Warpy.R;
 
 import java.io.File;
 import java.io.FileOutputStream;

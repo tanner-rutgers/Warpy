@@ -1,4 +1,4 @@
-package ca.tannerrutgers.ImageWarp.utils;
+package ca.tannerrutgers.Warpy.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

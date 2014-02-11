@@ -6,12 +6,23 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ImageWarp" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Warpy" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="042c1da3-0b10-465e-9d0d-07055d2c04ef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/listeners/WarpGestureListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java" />
+      <change type="DELETED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\listeners\WarpGestureListener.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\activities\MainActivity.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/MainActivity.java" />
+      <change type="MOVED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\activities\SettingsActivity.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java" />
+      <change type="MOVED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\dialogs\DiscardImageWarningDialog.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/DiscardImageWarningDialog.java" />
+      <change type="MOVED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\dialogs\MaskSizePreference.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/MaskSizePreference.java" />
+      <change type="MOVED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\models\ImageFilter.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageFilter.java" />
+      <change type="MOVED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\models\MeanFilter.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/MeanFilter.java" />
+      <change type="MOVED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\models\MedianFilter.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/MedianFilter.java" />
+      <change type="MOVED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\tasks\SaveImageTask.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java" />
+      <change type="MOVED" beforePath="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\src\ca\tannerrutgers\ImageWarp\utils\BitmapUtils.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/BitmapUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/preferences.xml" afterPath="$PROJECT_DIR$/res/xml/preferences.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageWarp.iws" />
@@ -67,38 +78,6 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java" line="222" class="ca.tannerrutgers.ImageWarp.activities.MainActivity" package="ca.tannerrutgers.ImageWarp.activities">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java" line="211" class="ca.tannerrutgers.ImageWarp.activities.MainActivity" package="ca.tannerrutgers.ImageWarp.activities">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -108,19 +87,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="183" column="32" selection-start="5616" selection-end="5616" vertical-scroll-proportion="0.4604651" vertical-offset="2341" max-vertical-offset="5576">
+            <state line="66" column="23" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.0" vertical-offset="861" max-vertical-offset="5797">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2160#2445#0" expanded="true" />
+                <element signature="e#2434#2435#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BitmapUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/BitmapUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="4" selection-start="185" selection-end="2187" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WarpGestureListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/listeners/WarpGestureListener.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="21" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+            <state line="16" column="72" selection-start="914" selection-end="914" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="45" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" vertical-offset="159" max-vertical-offset="646">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,23 +129,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SaveImageTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/tasks/SaveImageTask.java">
+      <file leaf-file-name="WarpGestureListener.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="48" selection-start="3236" selection-end="3236" vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="2193">
+            <state line="79" column="20" selection-start="2051" selection-end="2051" vertical-scroll-proportion="1.0464135" vertical-offset="847" max-vertical-offset="1581">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1204#1252#0" expanded="true" />
-                <element signature="e#2916#2966#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyOnTouchListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/MyOnTouchListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="38" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SaveImageTask.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="103" column="48" selection-start="3228" selection-end="3228" vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="2193">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1196#1244#0" expanded="true" />
+                <element signature="e#2908#2958#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="MaskSizePreference.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/MaskSizePreference.java">
+        <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/MaskSizePreference.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="28" selection-start="0" selection-end="7133" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="3672">
+            <state line="4" column="23" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
               <folding />
             </state>
           </provider>
@@ -153,7 +174,7 @@
       <file leaf-file-name="preferences.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/xml/preferences.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="28" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="221">
+            <state line="5" column="28" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
               <folding />
             </state>
           </provider>
@@ -183,7 +204,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/FilterSelectionDialog.java" />
         <option value="$PROJECT_DIR$/res/values/arrays.xml" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/ImageSelectionDialog.java" />
         <option value="$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/DiscardImageDialog.java" />
         <option value="$PROJECT_DIR$/res/menu/menu_settings.xml" />
@@ -198,6 +218,12 @@
         <option value="$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/tasks/SaveImageTask.java" />
         <option value="$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/listeners/WarpGestureListener.java" />
         <option value="$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/MaskSizePreference.java" />
+        <option value="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java" />
+        <option value="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/BitmapUtils.java" />
+        <option value="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java" />
+        <option value="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -264,7 +290,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ImageWarp" />
+              <option name="myItemId" value="Warpy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -286,7 +312,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ImageWarp" />
+              <option name="myItemId" value="Warpy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -308,7 +334,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ImageWarp" />
+              <option name="myItemId" value="Warpy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -330,7 +356,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ImageWarp" />
+              <option name="myItemId" value="Warpy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -352,7 +378,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ImageWarp" />
+              <option name="myItemId" value="Warpy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -374,7 +400,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ImageWarp" />
+              <option name="myItemId" value="Warpy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -453,6 +479,7 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_4" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -462,7 +489,28 @@
       <recent name="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\res\drawable-hdpi" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Application.ImageWarp">
+  <component name="RunManager" selected="Android Application.MainActivity">
+    <configuration default="false" name="MainActivity" type="AndroidRunConfigurationType" factoryName="Android Application" temporary="true">
+      <module name="Warpy" />
+      <option name="ACTIVITY_CLASS" value="ca.tannerrutgers.Warpy.activities.MainActivity" />
+      <option name="MODE" value="specific_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <RunnerSettings RunnerId="AndroidDebugRunner" />
+      <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -590,30 +638,14 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="false" name="ImageWarp" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="ImageWarp" />
-      <option name="ACTIVITY_CLASS" value="ca.tannerrutgers.ImageWarp.activities.MainActivity" />
-      <option name="MODE" value="specific_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="true" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <RunnerSettings RunnerId="AndroidDebugRunner" />
-      <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
-      <method />
-    </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Android Application.ImageWarp" />
+      <item index="0" class="java.lang.String" itemvalue="Android Application.MainActivity" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Android Application.MainActivity" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -655,7 +687,11 @@
       <created>1392089579181</created>
       <updated>1392089579181</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Bitmap now accessed through ImageView">
+      <created>1392094973439</created>
+      <updated>1392094973439</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -675,14 +711,14 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3301282" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18804348" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39673913" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26053214" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32799146" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32717392" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -704,7 +740,8 @@
     <MESSAGE value="Added ability to save images&#10;" />
     <MESSAGE value="Fixed isImageLoaded on camera cancel bug" />
     <MESSAGE value="Moved image saving to AsyncTask" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved image saving to AsyncTask" />
+    <MESSAGE value="Bitmap now accessed through ImageView" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bitmap now accessed through ImageView" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -714,21 +751,25 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="145" column="38" selection-start="4455" selection-end="4455" vertical-scroll-proportion="0.0" vertical-offset="2108" max-vertical-offset="7735">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2160#2445#0" expanded="true" />
+            <element signature="e#2434#2435#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/MaskSizePreference.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/MaskSizePreference.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="28" selection-start="0" selection-end="7133" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="3672">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/SettingsActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="2" selection-end="1605" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
           <folding />
@@ -776,21 +817,25 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="264" column="27" selection-start="8625" selection-end="8625" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="6562">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2160#2445#0" expanded="true" />
+            <element signature="e#2434#2435#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/MaskSizePreference.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/MaskSizePreference.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="13" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="3672">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/SettingsActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="850">
           <folding />
@@ -814,12 +859,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/DiscardImageWarningDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/DiscardImageWarningDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="47" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1071">
           <folding>
-            <element signature="e#1939#2169#0" expanded="true" />
-            <element signature="e#2150#2151#0" expanded="true" />
+            <element signature="e#1931#2161#0" expanded="true" />
+            <element signature="e#2142#2143#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -848,21 +893,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="264" column="27" selection-start="8625" selection-end="8625" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="6562">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2160#2445#0" expanded="true" />
+            <element signature="e#2434#2435#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/MaskSizePreference.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/MaskSizePreference.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="13" selection-start="485" selection-end="485" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="3672">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/SettingsActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="850">
           <folding />
@@ -886,12 +935,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/DiscardImageWarningDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/DiscardImageWarningDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="47" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1071">
           <folding>
-            <element signature="e#1939#2169#0" expanded="true" />
-            <element signature="e#2150#2151#0" expanded="true" />
+            <element signature="e#1931#2161#0" expanded="true" />
+            <element signature="e#2142#2143#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -935,13 +984,6 @@
         <state line="137" column="22" selection-start="4594" selection-end="4594" vertical-scroll-proportion="1.7043011" vertical-offset="987" max-vertical-offset="5797" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="80" selection-start="430" selection-end="430" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="459">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Android/android-sdk/sources/android-19/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="122" column="11" selection-start="4675" selection-end="4675" vertical-scroll-proportion="0.0" vertical-offset="1328" max-vertical-offset="19652" />
@@ -978,33 +1020,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/DiscardImageWarningDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/DiscardImageWarningDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="47" selection-start="714" selection-end="714" vertical-scroll-proportion="0.37470996" vertical-offset="0" max-vertical-offset="1020">
           <folding>
-            <element signature="e#1939#2169#0" expanded="true" />
-            <element signature="e#2150#2151#0" expanded="true" />
+            <element signature="e#1931#2161#0" expanded="true" />
+            <element signature="e#2142#2143#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/xml/preferences.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="28" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/menu_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="47" selection-start="611" selection-end="611" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/SettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="2" selection-end="1605" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
           <folding />
         </state>
       </provider>
@@ -1023,37 +1051,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/dialogs/MaskSizePreference.java">
+    <entry file="file://$USER_HOME$/Downloads/MyOnTouchListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="28" selection-start="0" selection-end="7133" vertical-scroll-proportion="0.0" vertical-offset="2785" max-vertical-offset="3672">
+        <state line="23" column="38" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/tasks/SaveImageTask.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/MaskSizePreference.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="48" selection-start="3236" selection-end="3236" vertical-scroll-proportion="0.0" vertical-offset="1333" max-vertical-offset="2193">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1204#1252#0" expanded="true" />
-            <element signature="e#2916#2966#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/listeners/WarpGestureListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="21" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/ImageWarp/activities/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="32" selection-start="5616" selection-end="5616" vertical-scroll-proportion="0.4604651" vertical-offset="2341" max-vertical-offset="5576">
+        <state line="4" column="23" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/xml/preferences.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="28" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="72" selection-start="914" selection-end="914" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/BitmapUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="4" selection-start="185" selection-end="2187" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="45" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="48" selection-start="3228" selection-end="3228" vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="2193">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1196#1244#0" expanded="true" />
+            <element signature="e#2908#2958#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="23" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.0" vertical-offset="861" max-vertical-offset="5797">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2160#2445#0" expanded="true" />
+            <element signature="e#2434#2435#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="20" selection-start="2051" selection-end="2051" vertical-scroll-proportion="1.0464135" vertical-offset="847" max-vertical-offset="1581">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
