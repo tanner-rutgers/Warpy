@@ -154,7 +154,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      * Called when take picture is selected from menu
      */
     private void takePictureSelected() {
-        if (currentImageUri != null && !isCurrentImageSaved) {
+        if (currentImage != null && !isCurrentImageSaved) {
             showDiscardImageWarningDialog(REQUEST_TAKE_PICTURE);
         } else {
             takePicture();
@@ -165,7 +165,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      * Called when load image is selected from menu
      */
     private void loadImageSelected() {
-        if (currentImageUri != null && !isCurrentImageSaved) {
+        if (currentImage != null && !isCurrentImageSaved) {
             showDiscardImageWarningDialog(REQUEST_LOAD_IMAGE);
         } else {
             loadImage();
