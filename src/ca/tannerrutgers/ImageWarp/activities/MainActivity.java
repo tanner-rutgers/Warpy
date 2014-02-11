@@ -6,7 +6,6 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -16,9 +15,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 import ca.tannerrutgers.ImageWarp.R;
 import ca.tannerrutgers.ImageWarp.dialogs.DiscardImageWarningDialog;
+import ca.tannerrutgers.ImageWarp.listeners.WarpGestureListener;
 import ca.tannerrutgers.ImageWarp.tasks.SaveImageTask;
 
 import java.io.*;
@@ -34,13 +33,12 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
     private static final int REQUEST_BACK_PRESSED = 2;
 
     // Current state variables
-    private Uri currentImageUri;
-    private Bitmap currentImage;
-    private boolean isCurrentImageSaved;
-    private boolean isImageLoaded;
+    private Uri mCurrentImageUri;
+    private boolean mIsCurrentImageSaved;
+    private boolean mIsImageLoaded;
 
     // View items
-    private ImageView imageView;
+    private ImageView mImageView;
 
     // ASyncTask used for filtering
 //    private FilterTask filterTask;
@@ -60,11 +58,12 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
 //        selectedMaskSize = PreferenceManager.getDefaultSharedPreferences(this).getInt("pref_mask_size",ImageFilter.SIZE_DEFAULT);
 
         // Initialize state
-        isCurrentImageSaved = false;
-        isImageLoaded = false;
+        mIsCurrentImageSaved = false;
+        mIsImageLoaded = false;
 
         // Initialize views
-        imageView = (ImageView)findViewById(R.id.imageView);
+        mImageView = (ImageView)findViewById(R.id.imageView);
+        mImageView.setOnTouchListener(new WarpGestureListener());
     }
 
 //    /**
@@ -93,7 +92,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      */
     @Override
     public void onBackPressed() {
-        if (currentImageUri != null && !isCurrentImageSaved) {
+        if (mCurrentImageUri != null && !mIsCurrentImageSaved) {
             showDiscardImageWarningDialog(REQUEST_BACK_PRESSED);
         } else {
             super.onBackPressed();
@@ -116,7 +115,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // Hide save option if no image is loaded
-        if (!isImageLoaded || isCurrentImageSaved) {
+        if (!mIsImageLoaded || mIsCurrentImageSaved) {
             MenuItem save = menu.findItem(R.id.menu_save_image);
             if (save != null) {
                 save.setEnabled(false);
@@ -156,7 +155,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      * Called when take picture is selected from menu
      */
     private void takePictureSelected() {
-        if (currentImage != null && !isCurrentImageSaved) {
+        if (mIsImageLoaded && !mIsCurrentImageSaved) {
             showDiscardImageWarningDialog(REQUEST_TAKE_PICTURE);
         } else {
             takePicture();
@@ -167,7 +166,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      * Called when load image is selected from menu
      */
     private void loadImageSelected() {
-        if (currentImage != null && !isCurrentImageSaved) {
+        if (mIsImageLoaded && !mIsCurrentImageSaved) {
             showDiscardImageWarningDialog(REQUEST_LOAD_IMAGE);
         } else {
             loadImage();
@@ -178,8 +177,11 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      * Save currently loaded/warped image to external storage
      */
     private void saveCurrentImage() {
+        Bitmap image = mImageView.getDrawingCache();
         SaveImageTask saveTask = new SaveImageTask(this);
-        saveTask.execute(currentImage);
+        saveTask.execute(image);
+        mIsCurrentImageSaved = true;
+        invalidateOptionsMenu();
     }
 
 
@@ -212,16 +214,16 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
             case REQUEST_LOAD_IMAGE:
                 if (resultCode == RESULT_OK) {
                     // Retrieve selected image and update views
-                    currentImage = getImageFromUri(returnedIntent.getData());
-                    updateViews(true);
+                    Bitmap image = getImageFromUri(returnedIntent.getData());
+                    updateImageView(image);
                 }
                 break;
             // Request is image from camera
             case REQUEST_TAKE_PICTURE:
                 if (resultCode == RESULT_OK) {
                     // Retrieve taken picture and update views
-                    currentImage = getImageFromUri(currentImageUri);
-                    updateViews(true);
+                    Bitmap image = getImageFromUri(mCurrentImageUri);
+                    updateImageView(image);
                 }
         }
     }
@@ -267,8 +269,8 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
                 Log.e(APP_TAG, "Error occured creating temp image file");
             }
             if (photoFile != null) {
-                currentImageUri = Uri.fromFile(photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, currentImageUri);
+                mCurrentImageUri = Uri.fromFile(photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mCurrentImageUri);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PICTURE);
             }
         }
@@ -321,28 +323,21 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
 //     */
 //    private Bitmap getScaledBitmapFromFilepath(String filepath) {
 //
-//        int viewWidth = imageView.getWidth();
-//        int viewHeight = imageView.getHeight();
+//        int viewWidth = mImageView.getWidth();
+//        int viewHeight = mImageView.getHeight();
 //
 //        return BitmapUtils.decodeSampledBitmapFromFilepath(filepath, viewWidth, viewHeight);
 //    }
 
     /**
-     * Updates views attached to this activity
+     * Set primary image view to passed image
      */
-    private void updateViews(boolean newImage) {
-        if (currentImage != null) {
-            imageView.setBackground(null);
-            imageView.setImageBitmap(currentImage);
-            isImageLoaded = true;
-            if (newImage) {
-                isCurrentImageSaved = false;
-            }
-            invalidateOptionsMenu();
-        } else {
-            imageView.setBackground(getResources().getDrawable(R.drawable.inset_background));
-            isImageLoaded = false;
-            isCurrentImageSaved = false;
+    private void updateImageView(Bitmap image) {
+        if (image != null) {
+            mImageView.setBackground(null);
+            mImageView.setImageBitmap(image);
+            mIsImageLoaded = true;
+            mIsCurrentImageSaved = false;
             invalidateOptionsMenu();
         }
     }
