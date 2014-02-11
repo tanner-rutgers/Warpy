@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ImageWarp.iml" filepath="$PROJECT_DIR$/ImageWarp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Warpy.iml" filepath="$PROJECT_DIR$/Warpy.iml" />
     </modules>
   </component>
 </project>

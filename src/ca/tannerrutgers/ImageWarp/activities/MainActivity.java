@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import ca.tannerrutgers.ImageWarp.R;
 import ca.tannerrutgers.ImageWarp.dialogs.DiscardImageWarningDialog;
+import ca.tannerrutgers.ImageWarp.tasks.SaveImageTask;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -25,7 +27,7 @@ import java.util.Date;
 
 public class MainActivity extends Activity implements DiscardImageWarningDialog.DiscardImageWarningDialogListener {
 
-    private static final String APP_TAG = "ImageWarp";
+    public static final String APP_TAG = "Warpy";
 
     private static final int REQUEST_LOAD_IMAGE = 0;
     private static final int REQUEST_TAKE_PICTURE = 1;
@@ -176,39 +178,10 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      * Save currently loaded/warped image to external storage
      */
     private void saveCurrentImage() {
-        if (isExternalStorageWritable()) {
-            File imageFile = null;
-            try {
-                imageFile = createWarpedImageFile();
-                OutputStream fOut = new FileOutputStream(imageFile);
-                if (currentImage != null) {
-                    currentImage.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
-                    fOut.flush();
-                    fOut.close();
-                    MediaStore.Images.Media.insertImage(getContentResolver(), imageFile.getAbsolutePath(), imageFile.getName(), imageFile.getName());
-                    isCurrentImageSaved = true;
-                    updateViews(false);
-                }
-            } catch (IOException e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_save_image), Toast.LENGTH_SHORT);
-                Log.e(APP_TAG, getResources().getString(R.string.error_save_image));
-            }
-        } else {
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_save_image), Toast.LENGTH_SHORT);
-            Log.e(APP_TAG, getResources().getString(R.string.error_save_image));
-        }
+        SaveImageTask saveTask = new SaveImageTask(this);
+        saveTask.execute(currentImage);
     }
 
-    /**
-     * Determines if external storage is writable
-     */
-    private boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            return true;
-        }
-        return false;
-    }
 
 //    /**
 //     * Called when settings is selected from menu
@@ -338,20 +311,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
         return image;
     }
 
-    /**
-     * Create public image file
-     * @return the new image file
-     */
-    private File createWarpedImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "WARPED_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
-        File image = new File(storageDir, imageFileName + ".jpg");
 
-        return image;
-    }
 
 //    /**
 //     * Returns the Bitmap located at the location filepath
@@ -386,64 +346,4 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
             invalidateOptionsMenu();
         }
     }
-
-//    /**
-//     * Class allowing image filtering to occur in background
-//     */
-//    private class FilterTask extends AsyncTask<ImageFilter, Void, Bitmap> {
-//
-//        private ProgressDialog dialog = new ProgressDialog(MainActivity.this);
-//
-//        ImageFilter filter;
-//
-//        /**
-//         * Setup dialog
-//         */
-//        @Override
-//        protected void onPreExecute() {
-//            dialog.setMessage("Filtering...");
-//            dialog.setCanceledOnTouchOutside(false);
-//            dialog.setCancelable(true);
-//
-//            // Cancel task and filtering if dialog is cancelled
-//            dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//                @Override
-//                public void onCancel(DialogInterface dialog) {
-//                    filter.cancelFiltering = true;
-//                    cancel(true);
-//                }
-//            });
-//            dialog.show();
-//        }
-//
-//        /**
-//         * Run filter in background task
-//         */
-//        @Override
-//        protected Bitmap doInBackground(ImageFilter... filters) {
-//            filter = filters[0];
-//            return filter.applyFilter();
-//        }
-//
-//        /**
-//         * Called when background task is finished
-//         */
-//        @Override
-//        protected void onPostExecute(Bitmap result) {
-//            if (dialog.isShowing()) {
-//                dialog.dismiss();
-//            }
-//            currentImageUri = result;
-//            updateViews();
-//        }
-//
-//        /**
-//         * Called when the current task is cancelled
-//         */
-//        @Override
-//        protected void onCancelled(Bitmap result) {
-//            filter.cancelFiltering = true;
-//            onCancelled();
-//        }
-//    }
 }
