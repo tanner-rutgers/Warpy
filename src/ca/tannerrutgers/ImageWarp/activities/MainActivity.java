@@ -2,15 +2,10 @@ package ca.tannerrutgers.ImageWarp.activities;
 
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.app.ProgressDialog;
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -19,34 +14,31 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 import ca.tannerrutgers.ImageWarp.R;
 import ca.tannerrutgers.ImageWarp.dialogs.DiscardImageWarningDialog;
-import ca.tannerrutgers.ImageWarp.dialogs.ImageSelectionDialog;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends Activity implements ImageSelectionDialog.ImageSelectionDialogListener, DiscardImageWarningDialog.DiscardImageWarningDialogListener {
+public class MainActivity extends Activity implements DiscardImageWarningDialog.DiscardImageWarningDialogListener {
 
     private static final String APP_TAG = "ImageWarp";
 
     private static final int REQUEST_LOAD_IMAGE = 0;
     private static final int REQUEST_TAKE_PICTURE = 1;
+    private static final int REQUEST_BACK_PRESSED = 2;
 
     // Current state variables
-    private Uri currentImage;
-    private boolean currentImageSaved;
-    private boolean backPressed;
+    private Uri currentImageUri;
+    private Bitmap currentImage;
+    private boolean isCurrentImageSaved;
+    private boolean isImageLoaded;
 
     // View items
     private ImageView imageView;
-    private Button applyFilterButton;
 
     // ASyncTask used for filtering
 //    private FilterTask filterTask;
@@ -66,12 +58,11 @@ public class MainActivity extends Activity implements ImageSelectionDialog.Image
 //        selectedMaskSize = PreferenceManager.getDefaultSharedPreferences(this).getInt("pref_mask_size",ImageFilter.SIZE_DEFAULT);
 
         // Initialize state
-        currentImageSaved = false;
-        backPressed = false;
+        isCurrentImageSaved = false;
+        isImageLoaded = false;
 
         // Initialize views
         imageView = (ImageView)findViewById(R.id.imageView);
-        applyFilterButton = (Button)findViewById(R.id.applyFilterButton);
     }
 
 //    /**
@@ -100,9 +91,8 @@ public class MainActivity extends Activity implements ImageSelectionDialog.Image
      */
     @Override
     public void onBackPressed() {
-        if (currentImage != null && !currentImageSaved) {
-            backPressed = true;
-            showDiscardImageWarningDialog();
+        if (currentImageUri != null && !isCurrentImageSaved) {
+            showDiscardImageWarningDialog(REQUEST_BACK_PRESSED);
         } else {
             super.onBackPressed();
         }
@@ -114,66 +104,126 @@ public class MainActivity extends Activity implements ImageSelectionDialog.Image
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_settings, menu);
+        inflater.inflate(R.menu.menu_main, menu);
         return true;
     }
 
-//    /**
-//     * Called when an option is selected in the menu bar
-//     */
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle item selection
-//        switch (item.getItemId()) {
-//            // Settings has been selected
-//            case R.id.menu_settings:
-//                launchPreferences();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
-
-//    /**
-//     * Launch preferences activity
-//     */
-//    private void launchPreferences() {
-//        Intent preferencesIntent = new Intent(MainActivity.this, SettingsActivity.class);
-//
-//        // Pass maximum possible mask size to preferences if image is loaded
-//        if (currentImage != null) {
-//            int maxSize = Math.min(currentImage.getWidth(), currentImage.getHeight());
-//            preferencesIntent.putExtra("max_mask_size", maxSize);
-//        }
-//
-//        startActivity(preferencesIntent);
-//    }
+    /**
+     * Called before menu is created
+     */
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Hide save option if no image is loaded
+        if (!isImageLoaded || isCurrentImageSaved) {
+            MenuItem save = menu.findItem(R.id.menu_save_image);
+            if (save != null) {
+                save.setEnabled(false);
+            }
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
 
     /**
-     * Handler for when select image button is clicked.
-     * Launches a dialog to choose how to load the picture.
+     * Called when an option is selected in the menu bar
      */
-    public void selectImageClicked(View v) {
-        if (currentImage != null && !currentImageSaved) {
-            showDiscardImageWarningDialog();
-        } else {
-            showImageSelectionDialog();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            // Take picture has been selected
+            case R.id.menu_take_picture:
+                takePictureSelected();
+                return true;
+            // Load image has been selected
+            case R.id.menu_load_image:
+                loadImageSelected();
+                return true;
+            case R.id.menu_save_image:
+                saveCurrentImage();
+                return true;
+            // Settings has been selected
+            case R.id.menu_settings:
+//                launchPreferences();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
     /**
-     * Display dialog letting user choose how to load new image
+     * Called when take picture is selected from menu
      */
-    private void showImageSelectionDialog() {
-        DialogFragment imageSelection = new ImageSelectionDialog();
-        imageSelection.show(getFragmentManager(), "imageSelection");
+    private void takePictureSelected() {
+        if (currentImageUri != null && !isCurrentImageSaved) {
+            showDiscardImageWarningDialog(REQUEST_TAKE_PICTURE);
+        } else {
+            takePicture();
+        }
     }
+
+    /**
+     * Called when load image is selected from menu
+     */
+    private void loadImageSelected() {
+        if (currentImageUri != null && !isCurrentImageSaved) {
+            showDiscardImageWarningDialog(REQUEST_LOAD_IMAGE);
+        } else {
+            loadImage();
+        }
+    }
+
+    /**
+     * Save currently loaded/warped image to external storage
+     */
+    private void saveCurrentImage() {
+        if (isExternalStorageWritable()) {
+            File imageFile = null;
+            try {
+                imageFile = createWarpedImageFile();
+                OutputStream fOut = new FileOutputStream(imageFile);
+                if (currentImage != null) {
+                    currentImage.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+                    fOut.flush();
+                    fOut.close();
+                    MediaStore.Images.Media.insertImage(getContentResolver(), imageFile.getAbsolutePath(), imageFile.getName(), imageFile.getName());
+                    isCurrentImageSaved = true;
+                    updateViews(false);
+                }
+            } catch (IOException e) {
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_save_image), Toast.LENGTH_SHORT);
+                Log.e(APP_TAG, getResources().getString(R.string.error_save_image));
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.error_save_image), Toast.LENGTH_SHORT);
+            Log.e(APP_TAG, getResources().getString(R.string.error_save_image));
+        }
+    }
+
+    /**
+     * Determines if external storage is writable
+     */
+    private boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+//    /**
+//     * Called when settings is selected from menu
+//     */
+//    private void launchPreferences() {
+//        Intent preferencesIntent = new Intent(MainActivity.this, SettingsActivity.class);
+//        startActivity(preferencesIntent);
+//    }
+
 
     /**
      * Display dialog warning user of image discard
      */
-    private void showDiscardImageWarningDialog() {
-        DialogFragment discardImageWarning = new DiscardImageWarningDialog();
+    private void showDiscardImageWarningDialog(int requestType) {
+        DialogFragment discardImageWarning = new DiscardImageWarningDialog(requestType);
         discardImageWarning.show(getFragmentManager(), "discardImageWarning");
     }
 
@@ -189,15 +239,16 @@ public class MainActivity extends Activity implements ImageSelectionDialog.Image
             case REQUEST_LOAD_IMAGE:
                 if (resultCode == RESULT_OK) {
                     // Retrieve selected image and update views
-                    currentImage = returnedIntent.getData();
-                    updateViews();
+                    currentImage = getImageFromUri(returnedIntent.getData());
+                    updateViews(true);
                 }
                 break;
             // Request is image from camera
             case REQUEST_TAKE_PICTURE:
                 if (resultCode == RESULT_OK) {
-                    // Image Uri is already set when taking pictures, update views
-                    updateViews();
+                    // Retrieve taken picture and update views
+                    currentImage = getImageFromUri(currentImageUri);
+                    updateViews(true);
                 }
         }
     }
@@ -220,10 +271,9 @@ public class MainActivity extends Activity implements ImageSelectionDialog.Image
     }
 
     /**
-     * Called when user selects load image from image selection dialog
+     * Launch an image selection activity to select an image to load
      */
-    @Override
-    public void onLoadImageSelection() {
+    public void loadImage() {
         Intent loadImageIntent = new Intent(Intent.ACTION_GET_CONTENT);
         loadImageIntent.setType("image/*");
         if (loadImageIntent.resolveActivity(getPackageManager()) != null) {
@@ -232,53 +282,48 @@ public class MainActivity extends Activity implements ImageSelectionDialog.Image
     }
 
     /**
-     * Called when user selects take picture from image selection dialog
+     * Launch a new camera activity to take a picture
      */
-    @Override
-    public void onTakePictureSelection() {
+    public void takePicture() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             File photoFile = null;
             try {
-                photoFile = createImageFile();
-                photoFile.delete();
+                photoFile = createTempImageFile();
             } catch (IOException ex) {
                 Log.e(APP_TAG, "Error occured creating temp image file");
             }
             if (photoFile != null) {
-                currentImage = Uri.fromFile(photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, currentImage);
+                currentImageUri = Uri.fromFile(photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, currentImageUri);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PICTURE);
             }
         }
     }
 
     /**
-     * Called when user clicks ok on discard image warning
+     * Called when user clicks positive button on discard image warning
      */
     @Override
-    public void onDiscardImageSelection() {
-        if (backPressed) {
-            backPressed = false;
-            super.onBackPressed();
-        } else {
-            showImageSelectionDialog();
+    public void onDiscardImageSelection(int requestType) {
+        switch (requestType) {
+            case REQUEST_TAKE_PICTURE:
+                takePicture();
+                break;
+            case REQUEST_LOAD_IMAGE:
+                loadImage();
+                break;
+            case REQUEST_BACK_PRESSED:
+                super.onBackPressed();
+                break;
         }
-    }
-
-    /**
-     * Called when user clicks cancel on discard image warning
-     */
-    @Override
-    public void onDiscardCancelSelection() {
-        backPressed = false;
     }
 
     /**
      * Create temporary image file for camera intent
      * @return the temporary image file
      */
-    private File createImageFile() throws IOException {
+    private File createTempImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
@@ -289,6 +334,21 @@ public class MainActivity extends Activity implements ImageSelectionDialog.Image
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
+
+        return image;
+    }
+
+    /**
+     * Create public image file
+     * @return the new image file
+     */
+    private File createWarpedImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "WARPED_" + timeStamp + "_";
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File image = new File(storageDir, imageFileName + ".jpg");
 
         return image;
     }
@@ -310,11 +370,20 @@ public class MainActivity extends Activity implements ImageSelectionDialog.Image
     /**
      * Updates views attached to this activity
      */
-    private void updateViews() {
+    private void updateViews(boolean newImage) {
         if (currentImage != null) {
             imageView.setBackground(null);
-            imageView.setImageBitmap(getImageFromUri(currentImage));
-            applyFilterButton.setEnabled(true);
+            imageView.setImageBitmap(currentImage);
+            isImageLoaded = true;
+            if (newImage) {
+                isCurrentImageSaved = false;
+            }
+            invalidateOptionsMenu();
+        } else {
+            imageView.setBackground(getResources().getDrawable(R.drawable.inset_background));
+            isImageLoaded = false;
+            isCurrentImageSaved = false;
+            invalidateOptionsMenu();
         }
     }
 
@@ -364,7 +433,7 @@ public class MainActivity extends Activity implements ImageSelectionDialog.Image
 //            if (dialog.isShowing()) {
 //                dialog.dismiss();
 //            }
-//            currentImage = result;
+//            currentImageUri = result;
 //            updateViews();
 //        }
 //

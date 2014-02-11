@@ -18,8 +18,13 @@ public class DiscardImageWarningDialog extends DialogFragment {
      * to handle the selection of how to load an image
      */
     public interface DiscardImageWarningDialogListener {
-        public void onDiscardImageSelection();
-        public void onDiscardCancelSelection();
+        public void onDiscardImageSelection(int requestType);
+    }
+
+    private int requestType;
+
+    public DiscardImageWarningDialog(int requestType) {
+        this.requestType = requestType;
     }
 
     DiscardImageWarningDialogListener mListener;
@@ -44,12 +49,12 @@ public class DiscardImageWarningDialog extends DialogFragment {
         builder.setMessage(R.string.dialog_discard_image)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        mListener.onDiscardImageSelection();
+                        mListener.onDiscardImageSelection(requestType);
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        mListener.onDiscardCancelSelection();
+                        DiscardImageWarningDialog.this.getDialog().cancel();
                     }
                 });
         return builder.create();

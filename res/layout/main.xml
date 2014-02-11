@@ -6,27 +6,12 @@
         >
     <ImageView
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:id="@id/imageView"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:contentDescription="@string/imageDescription"
             android:background="@drawable/inset_background"/>
-    <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/loadImageButton"
-            android:id="@+id/loadImageButton"
-            android:clickable="true"
-            android:onClick="selectImageClicked"/>
-    <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/saveImageButton"
-            android:id="@+id/applyFilterButton"
-            android:clickable="true"
-            android:enabled="false"
-            android:onClick="applyFilterClicked"/>
 
 </LinearLayout>
 
