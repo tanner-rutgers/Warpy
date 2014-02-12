@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
 import ca.tannerrutgers.Warpy.R;
+import ca.tannerrutgers.Warpy.activities.MainActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,14 +23,16 @@ import java.util.Date;
  */
 public class SaveImageTask extends AsyncTask<Bitmap, Void, Void> {
 
+    private static final String ALBUM_NAME = "Warpy";
+
     private ProgressDialog dialog;      // Spinner dialog to show when processing
-    private Activity parent;            // Parent activity that started us
+    private MainActivity parent;            // Parent activity that started us
     private IOException exception;      // Exception to be handled later if occurs
 
     /**
      * Constructor - takes and stores calling activity
      */
-    public SaveImageTask(Activity activity) {
+    public SaveImageTask(MainActivity activity) {
         super();
         this.parent = activity;
         this.dialog = new ProgressDialog(activity);
@@ -63,18 +66,20 @@ public class SaveImageTask extends AsyncTask<Bitmap, Void, Void> {
             File imageFile = null;
             try {
                 imageFile = createImageFile();
-                OutputStream fOut = new FileOutputStream(imageFile);
-                if (image != null) {
+                if (imageFile != null && image != null) {
+                    OutputStream fOut = new FileOutputStream(imageFile);
                     image.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
                     fOut.flush();
                     fOut.close();
                     MediaStore.Images.Media.insertImage(parent.getContentResolver(), imageFile.getAbsolutePath(), imageFile.getName(), imageFile.getName());
+                } else {
+                    exception = new IOException("Tried to save null image");
                 }
             } catch (IOException e) {
                 exception = e;
             }
         } else {
-            exception = new IOException("Tried to save null image");
+            exception = new IOException("External storage not writable");
         }
 
         return null;
@@ -92,7 +97,7 @@ public class SaveImageTask extends AsyncTask<Bitmap, Void, Void> {
         // If exception occurred, notify user and log
         if (exception != null) {
             Toast.makeText(parent.getApplicationContext(), "Could not save image. Please try again.", Toast.LENGTH_SHORT);
-            Log.e(parent.getResources().getString(R.string.app_name), exception.getMessage());
+            Log.e(MainActivity.APP_TAG, exception.getMessage());
         }
     }
 
@@ -110,13 +115,22 @@ public class SaveImageTask extends AsyncTask<Bitmap, Void, Void> {
     /**
      * Create public image file
      */
-    private File createImageFile() throws IOException {
+    public File createImageFile() throws IOException {
+        File image = null;
+
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
-        File image = new File(storageDir, imageFileName + ".jpg");
+        String imageFileName = "WARPED_" + timeStamp + "_";
+
+        // Get storage directory for app
+        File storageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), ALBUM_NAME);
+        if (!storageDir.exists() && !storageDir.mkdir()) {
+            Log.e(MainActivity.APP_TAG, "Could not create image directory");
+        } else {
+            // Create image file
+            image = new File(storageDir, imageFileName + ".jpg");
+        }
 
         return image;
     }

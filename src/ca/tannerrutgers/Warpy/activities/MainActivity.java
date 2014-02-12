@@ -24,16 +24,23 @@ import java.util.Date;
 
 public class MainActivity extends Activity implements DiscardImageWarningDialog.DiscardImageWarningDialogListener {
 
-    private static final String APP_TAG = "Warpy";
+    public static final String APP_TAG = "Warpy";
 
+    // Request types
     private static final int REQUEST_LOAD_IMAGE = 0;
     private static final int REQUEST_TAKE_PICTURE = 1;
     private static final int REQUEST_BACK_PRESSED = 2;
 
+    // Image save/return behaviour types
+    private static final int ACTION_EDIT = 3;
+    private static final int ACTION_PICK = 4;
+    private static final int ACTION_DEFAULT = 5;
+
     // Current state variables
+    private int mAppBehaviour;
     private Uri mCurrentImageUri;
     private boolean mIsCurrentImageSaved;
-    private boolean mIsImageLoaded;
+    private Bitmap mCurrentBitmap;
 
     // View items
     private ImageView mImageView;
@@ -51,10 +58,6 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
         // Set default values if first time launching
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
-        // Initialize state
-        mIsCurrentImageSaved = false;
-        mIsImageLoaded = false;
-
         // Initialize views
         mImageView = (ImageView)findViewById(R.id.imageView);
         WarpGestureListener listener = new WarpGestureListener(this);
@@ -67,28 +70,64 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
                 return mGestureDetector.onTouchEvent(me) || returnVal;
             }
         });
+
+        // Default behaviour is to allow saving of image
+        mAppBehaviour = ACTION_DEFAULT;
+
+        // Initialize other state variables
+        mIsCurrentImageSaved = false;
+
+        determineBehaviour();
     }
 
-//    /**
-//     * Called when the activity is resumed
-//     */
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        selectedMaskSize = PreferenceManager.getDefaultSharedPreferences(this).getInt("pref_mask_size",ImageFilter.SIZE_DEFAULT);
-//    }
+    private void determineBehaviour() {
+        // Get intent that started activity
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
 
-//    /**
-//     * Called when the activity is destroyed
-//     */
-//    @Override
-//    public void onDestroy() {
-//        // Cancel current filter task if needed
-//        if (filterTask != null && filterTask.getStatus() != AsyncTask.Status.FINISHED) {
-//            filterTask.cancel(true);
-//        }
-//        super.onDestroy();
-//    }
+        // Handle possibilities of how app was launched
+        if ((Intent.ACTION_VIEW.equals(action) || Intent.ACTION_EDIT.equals(action)) && type != null) {
+            // App was launched to view/edit an image
+            if (type.startsWith("image/")) {
+                Uri imageUri = intent.getData();
+                if (imageUri != null) {
+                    mAppBehaviour = ACTION_EDIT;
+                    mCurrentBitmap = getImageFromUri(imageUri);
+                    updateViews();
+                }
+            }
+        } else if (Intent.ACTION_PICK.equals(action) || (Intent.ACTION_GET_CONTENT.equals(action) && type != null)) {
+            // App was launched to return an image
+            if (Intent.ACTION_PICK.equals(action) || (type != null && type.startsWith("image/"))) {
+                mAppBehaviour = ACTION_PICK;
+            }
+        }
+    }
+
+    /**
+     * Called when the activity is resumed
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    /**
+     * Called when activity is started
+     */
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    /**
+     * Called when the activity is destroyed
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
     /**
      * Called when the back button is pressed
@@ -117,13 +156,54 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // Hide save option if no image is loaded
-        if (!mIsImageLoaded || mIsCurrentImageSaved) {
+
+        // Set menu items based on how activity was started
+
+        if (mAppBehaviour == ACTION_PICK) {     // Must return image
+            // Hide save menu item
             MenuItem save = menu.findItem(R.id.menu_save_image);
             if (save != null) {
-                save.setEnabled(false);
+                save.setVisible(false);
+            }
+            // Set status of Done menu item
+            MenuItem done = menu.findItem(R.id.menu_done);
+            if (done != null) {
+                done.setEnabled(mCurrentBitmap != null);
+            }
+        } else if (mAppBehaviour == ACTION_EDIT) {  // Editing/viewing provided image
+            // Hide done menu item
+            MenuItem done = menu.findItem(R.id.menu_done);
+            if (done != null) {
+                done.setVisible(false);
+            }
+            // Hide load image menu item
+            MenuItem loadImage = menu.findItem(R.id.menu_load_image);
+            if (loadImage != null) {
+                loadImage.setVisible(false);
+            }
+            // Hide take picture menu item
+            MenuItem takePicture = menu.findItem(R.id.menu_take_picture);
+            if (takePicture != null) {
+                takePicture.setVisible(false);
+            }
+            // Set status of save menu item
+            MenuItem save = menu.findItem(R.id.menu_save_image);
+            if (save != null) {
+                save.setEnabled(mCurrentBitmap != null && !mIsCurrentImageSaved);
+            }
+        } else {    // Default app behaviour
+            // Hide done menu item
+            MenuItem done = menu.findItem(R.id.menu_done);
+            if (done != null) {
+                done.setVisible(false);
+            }
+            // Set status of save menu item
+            MenuItem save = menu.findItem(R.id.menu_save_image);
+            if (save != null) {
+                save.setEnabled(mCurrentBitmap != null && !mIsCurrentImageSaved);
             }
         }
+
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -142,8 +222,13 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
             case R.id.menu_load_image:
                 loadImageSelected();
                 return true;
+            // Save image has been selected
             case R.id.menu_save_image:
                 saveCurrentImage();
+                return true;
+            // Return image / Done has been selected
+            case R.id.menu_done:
+                returnImageAndFinish();
                 return true;
             // Settings has been selected
             case R.id.menu_settings:
@@ -158,7 +243,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      * Called when take picture is selected from menu
      */
     private void takePictureSelected() {
-        if (mIsImageLoaded && !mIsCurrentImageSaved) {
+        if (mCurrentBitmap != null && !mIsCurrentImageSaved) {
             showDiscardImageWarningDialog(REQUEST_TAKE_PICTURE);
         } else {
             takePicture();
@@ -169,7 +254,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      * Called when load image is selected from menu
      */
     private void loadImageSelected() {
-        if (mIsImageLoaded && !mIsCurrentImageSaved) {
+        if (mCurrentBitmap != null && !mIsCurrentImageSaved) {
             showDiscardImageWarningDialog(REQUEST_LOAD_IMAGE);
         } else {
             loadImage();
@@ -180,11 +265,40 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
      * Save currently loaded/warped image to external storage
      */
     private void saveCurrentImage() {
-        Bitmap image = mImageView.getDrawingCache();
-        SaveImageTask saveTask = new SaveImageTask(this);
-        saveTask.execute(image);
-        mIsCurrentImageSaved = true;
-        invalidateOptionsMenu();
+        if (mCurrentBitmap != null) {
+            SaveImageTask saveTask = new SaveImageTask(this);
+            saveTask.execute(mCurrentBitmap);
+            mIsCurrentImageSaved = true;
+            invalidateOptionsMenu();
+        }
+    }
+
+    /**
+     * Return currently loaded image to calling activity and exit
+     */
+    private void returnImageAndFinish() {
+        File returnFile = null;
+        Intent resultIntent = new Intent(getApplicationContext().getPackageName() + "ACTION_RETURN_IMAGE");
+        try {
+            returnFile = createTempImageFile();
+            OutputStream fOut = new FileOutputStream(returnFile);
+            if (mCurrentBitmap != null) {
+                mCurrentBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+                fOut.flush();
+                fOut.close();
+            }
+        } catch (IOException ex) {
+            Log.e(APP_TAG, "Error occured creating temp image file");
+        }
+        if (returnFile != null) {
+            Uri fileUri = Uri.fromFile(returnFile);
+            if (fileUri != null) {
+                resultIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                resultIntent.setDataAndType(fileUri, getContentResolver().getType(fileUri));
+                setResult(Activity.RESULT_OK, resultIntent);
+            }
+        }
+        finish();
     }
 
 
@@ -217,16 +331,16 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
             case REQUEST_LOAD_IMAGE:
                 if (resultCode == RESULT_OK) {
                     // Retrieve selected image and update views
-                    Bitmap image = getImageFromUri(returnedIntent.getData());
-                    updateImageView(image);
+                    mCurrentBitmap = getImageFromUri(returnedIntent.getData());
+                    updateViews();
                 }
                 break;
             // Request is image from camera
             case REQUEST_TAKE_PICTURE:
                 if (resultCode == RESULT_OK) {
                     // Retrieve taken picture and update views
-                    Bitmap image = getImageFromUri(mCurrentImageUri);
-                    updateImageView(image);
+                    mCurrentBitmap = getImageFromUri(mCurrentImageUri);
+                    updateViews();
                 }
         }
     }
@@ -317,16 +431,15 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
     }
 
     /**
-     * Set primary image view to passed image
+     * Update views belonging to this activity
      */
-    private void updateImageView(Bitmap image) {
-        if (image != null) {
+    private void updateViews() {
+        if (mCurrentBitmap != null) {
             mImageView.setBackground(null);
-            mImageView.setImageBitmap(image);
-            mIsImageLoaded = true;
+            mImageView.setImageBitmap(mCurrentBitmap);
             mIsCurrentImageSaved = false;
-            invalidateOptionsMenu();
         }
+        invalidateOptionsMenu();
     }
 
     public void debugLog(String message) {

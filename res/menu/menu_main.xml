@@ -13,6 +13,10 @@
           android:title="@string/save_image"
           android:icon="@drawable/ic_menu_save"
           android:showAsAction="ifRoom" />
+    <item android:id="@+id/menu_done"
+          android:title="@string/done"
+          android:icon="@drawable/ic_menu_mark"
+          android:showAsAction="ifRoom" />
     <item android:id="@+id/menu_settings"
           android:title="@string/settings"
           android:showAsAction="never" />
