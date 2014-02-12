@@ -1,4 +1,4 @@
-ImageWarp
+Warpy
 =========
 
 ECE 493 - Image warping Android app
