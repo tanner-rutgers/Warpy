@@ -31,10 +31,9 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
     private static final int REQUEST_TAKE_PICTURE = 1;
     private static final int REQUEST_BACK_PRESSED = 2;
 
-    // Image save/return behaviour types
+    // App behaviour types
     private static final int ACTION_EDIT = 3;
-    private static final int ACTION_PICK = 4;
-    private static final int ACTION_DEFAULT = 5;
+    private static final int ACTION_DEFAULT = 4;
 
     // Current state variables
     private int mAppBehaviour;
@@ -71,15 +70,16 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
             }
         });
 
-        // Default behaviour is to allow saving of image
-        mAppBehaviour = ACTION_DEFAULT;
-
         // Initialize other state variables
         mIsCurrentImageSaved = false;
 
+        // Determine behaviour of app (how it was launched)
         determineBehaviour();
     }
 
+    /**
+     * Determines behaviour of app based on how it was started
+     */
     private void determineBehaviour() {
         // Get intent that started activity
         Intent intent = getIntent();
@@ -97,11 +97,8 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
                     updateViews();
                 }
             }
-        } else if (Intent.ACTION_PICK.equals(action) || (Intent.ACTION_GET_CONTENT.equals(action) && type != null)) {
-            // App was launched to return an image
-            if (Intent.ACTION_PICK.equals(action) || (type != null && type.startsWith("image/"))) {
-                mAppBehaviour = ACTION_PICK;
-            }
+        } else {
+            mAppBehaviour = ACTION_DEFAULT;
         }
     }
 
@@ -159,23 +156,7 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
 
         // Set menu items based on how activity was started
 
-        if (mAppBehaviour == ACTION_PICK) {     // Must return image
-            // Hide save menu item
-            MenuItem save = menu.findItem(R.id.menu_save_image);
-            if (save != null) {
-                save.setVisible(false);
-            }
-            // Set status of Done menu item
-            MenuItem done = menu.findItem(R.id.menu_done);
-            if (done != null) {
-                done.setEnabled(mCurrentBitmap != null);
-            }
-        } else if (mAppBehaviour == ACTION_EDIT) {  // Editing/viewing provided image
-            // Hide done menu item
-            MenuItem done = menu.findItem(R.id.menu_done);
-            if (done != null) {
-                done.setVisible(false);
-            }
+        if (mAppBehaviour == ACTION_EDIT) {  // Editing/viewing provided image
             // Hide load image menu item
             MenuItem loadImage = menu.findItem(R.id.menu_load_image);
             if (loadImage != null) {
@@ -186,22 +167,12 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
             if (takePicture != null) {
                 takePicture.setVisible(false);
             }
-            // Set status of save menu item
-            MenuItem save = menu.findItem(R.id.menu_save_image);
-            if (save != null) {
-                save.setEnabled(mCurrentBitmap != null && !mIsCurrentImageSaved);
-            }
-        } else {    // Default app behaviour
-            // Hide done menu item
-            MenuItem done = menu.findItem(R.id.menu_done);
-            if (done != null) {
-                done.setVisible(false);
-            }
-            // Set status of save menu item
-            MenuItem save = menu.findItem(R.id.menu_save_image);
-            if (save != null) {
-                save.setEnabled(mCurrentBitmap != null && !mIsCurrentImageSaved);
-            }
+        }
+
+        // Set status of save menu item
+        MenuItem save = menu.findItem(R.id.menu_save_image);
+        if (save != null) {
+            save.setEnabled(mCurrentBitmap != null && !mIsCurrentImageSaved);
         }
 
         return super.onPrepareOptionsMenu(menu);
@@ -225,10 +196,6 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
             // Save image has been selected
             case R.id.menu_save_image:
                 saveCurrentImage();
-                return true;
-            // Return image / Done has been selected
-            case R.id.menu_done:
-                returnImageAndFinish();
                 return true;
             // Settings has been selected
             case R.id.menu_settings:
@@ -271,34 +238,6 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
             mIsCurrentImageSaved = true;
             invalidateOptionsMenu();
         }
-    }
-
-    /**
-     * Return currently loaded image to calling activity and exit
-     */
-    private void returnImageAndFinish() {
-        File returnFile = null;
-        Intent resultIntent = new Intent(getApplicationContext().getPackageName() + "ACTION_RETURN_IMAGE");
-        try {
-            returnFile = createTempImageFile();
-            OutputStream fOut = new FileOutputStream(returnFile);
-            if (mCurrentBitmap != null) {
-                mCurrentBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
-                fOut.flush();
-                fOut.close();
-            }
-        } catch (IOException ex) {
-            Log.e(APP_TAG, "Error occured creating temp image file");
-        }
-        if (returnFile != null) {
-            Uri fileUri = Uri.fromFile(returnFile);
-            if (fileUri != null) {
-                resultIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                resultIntent.setDataAndType(fileUri, getContentResolver().getType(fileUri));
-                setResult(Activity.RESULT_OK, resultIntent);
-            }
-        }
-        finish();
     }
 
 
@@ -412,6 +351,18 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
     }
 
     /**
+     * Update views belonging to this activity
+     */
+    private void updateViews() {
+        if (mCurrentBitmap != null) {
+            mImageView.setBackground(null);
+            mImageView.setImageBitmap(mCurrentBitmap);
+            mIsCurrentImageSaved = false;
+        }
+        invalidateOptionsMenu();
+    }
+
+    /**
      * Create temporary image file for camera intent
      * @return the temporary image file
      */
@@ -428,18 +379,6 @@ public class MainActivity extends Activity implements DiscardImageWarningDialog.
         );
 
         return image;
-    }
-
-    /**
-     * Update views belonging to this activity
-     */
-    private void updateViews() {
-        if (mCurrentBitmap != null) {
-            mImageView.setBackground(null);
-            mImageView.setImageBitmap(mCurrentBitmap);
-            mIsCurrentImageSaved = false;
-        }
-        invalidateOptionsMenu();
     }
 
     public void debugLog(String message) {
