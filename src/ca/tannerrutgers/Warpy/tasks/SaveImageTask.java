@@ -1,6 +1,5 @@
 package ca.tannerrutgers.Warpy.tasks;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -9,7 +8,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Toast;
 import ca.tannerrutgers.Warpy.R;
-import ca.tannerrutgers.Warpy.activities.MainActivity;
+import ca.tannerrutgers.Warpy.activities.WarpyActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,13 +25,13 @@ public class SaveImageTask extends AsyncTask<Bitmap, Void, Void> {
     private static final String ALBUM_NAME = "Warpy";
 
     private ProgressDialog dialog;      // Spinner dialog to show when processing
-    private MainActivity parent;            // Parent activity that started us
+    private WarpyActivity parent;            // Parent activity that started us
     private IOException exception;      // Exception to be handled later if occurs
 
     /**
      * Constructor - takes and stores calling activity
      */
-    public SaveImageTask(MainActivity activity) {
+    public SaveImageTask(WarpyActivity activity) {
         super();
         this.parent = activity;
         this.dialog = new ProgressDialog(activity);
@@ -97,7 +96,7 @@ public class SaveImageTask extends AsyncTask<Bitmap, Void, Void> {
         // If exception occurred, notify user and log
         if (exception != null) {
             Toast.makeText(parent.getApplicationContext(), "Could not save image. Please try again.", Toast.LENGTH_SHORT);
-            Log.e(MainActivity.APP_TAG, exception.getMessage());
+            Log.e(WarpyActivity.APP_TAG, exception.getMessage());
         }
     }
 
@@ -126,12 +125,11 @@ public class SaveImageTask extends AsyncTask<Bitmap, Void, Void> {
         File storageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), ALBUM_NAME);
         if (!storageDir.exists() && !storageDir.mkdir()) {
-            Log.e(MainActivity.APP_TAG, "Could not create image directory");
+            Log.e(WarpyActivity.APP_TAG, "Could not create image directory");
         } else {
             // Create image file
             image = new File(storageDir, imageFileName + ".jpg");
         }
-
         return image;
     }
 }

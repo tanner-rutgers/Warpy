@@ -15,7 +15,7 @@ public class DiscardImageWarningDialog extends DialogFragment {
 
     /**
      * Interface that hosting activity must implement in order
-     * to handle the selection of how to load an image
+     * to handle the result of selecting to discard/keep image
      */
     public interface DiscardImageWarningDialogListener {
         public void onDiscardImageSelection(int requestType);
@@ -38,7 +38,7 @@ public class DiscardImageWarningDialog extends DialogFragment {
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(activity.toString()
-                    + " must implement ImageSelectionDialogListener");
+                    + " must implement DiscardImageWarningDialogListener");
         }
     }
 

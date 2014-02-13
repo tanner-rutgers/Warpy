@@ -1,10 +1,9 @@
 package ca.tannerrutgers.Warpy.listeners;
 
-import android.gesture.Gesture;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import ca.tannerrutgers.Warpy.activities.MainActivity;
+import ca.tannerrutgers.Warpy.activities.WarpyActivity;
 
 /**
  * Created by Tanner on 10/02/14.
@@ -13,9 +12,9 @@ public class WarpGestureListener implements GestureDetector.OnGestureListener,
         GestureDetector.OnDoubleTapListener,
         ScaleGestureDetector.OnScaleGestureListener {
 
-    private MainActivity mActivity;
+    private WarpyActivity mActivity;
 
-    public WarpGestureListener(MainActivity activity) {
+    public WarpGestureListener(WarpyActivity activity) {
         mActivity = activity;
     }
 

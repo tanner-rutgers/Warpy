@@ -22,7 +22,7 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends Activity implements DiscardImageWarningDialog.DiscardImageWarningDialogListener {
+public class WarpyActivity extends Activity implements DiscardImageWarningDialog.DiscardImageWarningDialogListener {
 
     public static final String APP_TAG = "Warpy";
 
