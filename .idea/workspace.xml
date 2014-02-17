@@ -15,18 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="042c1da3-0b10-465e-9d0d-07055d2c04ef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ic_menu_revert.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_menu_revert.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ic_menu_revert.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ic_menu_revert.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java" />
-      <change type="DELETED" beforePath="C:\Users\Tanner\School\493\Warpy\src\ca\tannerrutgers\Warpy\utils\BitmapUtils.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/MaskSizePreference.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/MaskSizePreference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/WarpTask.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/WarpTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/menu_main.xml" afterPath="$PROJECT_DIR$/res/menu/menu_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageWarp.iws" />
@@ -201,7 +190,7 @@
       <file leaf-file-name="WarpActionStack.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="30" selection-start="1727" selection-end="1727" vertical-scroll-proportion="0.79657793" vertical-offset="550" max-vertical-offset="1292">
+            <state line="66" column="27" selection-start="1899" selection-end="1899" vertical-scroll-proportion="0.7110266" vertical-offset="748" max-vertical-offset="1292">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1326#1377#0" expanded="true" />
@@ -864,7 +853,11 @@
       <created>1392603832461</created>
       <updated>1392603832461</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implemented undo functionality (fixed size)">
+      <created>1392614766962</created>
+      <updated>1392614766962</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -884,7 +877,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32846716" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4025026" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4025026" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -919,7 +912,8 @@
     <MESSAGE value="Removed ACTION_PICK functionality" />
     <MESSAGE value="Minor cleanup" />
     <MESSAGE value="Warping is functional" />
-    <option name="LAST_COMMIT_MESSAGE" value="Warping is functional" />
+    <MESSAGE value="Implemented undo functionality (fixed size)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented undo functionality (fixed size)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1305,7 +1299,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="30" selection-start="1727" selection-end="1727" vertical-scroll-proportion="0.79657793" vertical-offset="550" max-vertical-offset="1292">
+        <state line="66" column="27" selection-start="1899" selection-end="1899" vertical-scroll-proportion="0.7110266" vertical-offset="748" max-vertical-offset="1292">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1326#1377#0" expanded="true" />

@@ -64,7 +64,7 @@ public class WarpActionStack<T> extends Stack<T> {
     @Override
     public void clear() {
         while (this.size() > 0) {
-            this.pop();
+            this.remove(0);
         }
     }
 }
