@@ -142,7 +142,7 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
         int undoSize = PreferenceManager.getDefaultSharedPreferences(this).getInt(SettingsActivity.KEY_PREF_UNDO_SIZE, UndoSizePreference.DEFAULT_VALUE);
         if (mActionStack == null) {
             mActionStack = new WarpActionStack<Uri>(this, undoSize);
-        } else {
+        } else if (undoSize != mActionStack.capacity()){
             mActionStack.resize(undoSize);
         }
     }
@@ -243,13 +243,25 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
         // Set status of save menu item
         MenuItem save = menu.findItem(R.id.menu_save_image);
         if (save != null) {
-            save.setEnabled(mCurrentBitmap != null && !mIsCurrentImageSaved);
+            boolean enabled = mCurrentBitmap != null && !mIsCurrentImageSaved;
+            save.setEnabled(enabled);
+            if (enabled) {
+                save.getIcon().setAlpha(255);
+            } else {
+                save.getIcon().setAlpha(130);
+            }
         }
 
         // Set status of undo item
         MenuItem undo = menu.findItem(R.id.menu_undo);
         if (undo != null) {
-            undo.setEnabled(!mActionStack.isEmpty());
+            boolean enabled = !mActionStack.isEmpty();
+            undo.setEnabled(enabled);
+            if (enabled) {
+                undo.getIcon().setAlpha(255);
+            } else {
+                undo.getIcon().setAlpha(130);
+            }
         }
 
         return super.onPrepareOptionsMenu(menu);
@@ -274,6 +286,7 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
             case R.id.menu_save_image:
                 saveCurrentImage();
                 return true;
+            // Undo button has been selected
             case R.id.menu_undo:
                 undoSelected();
                 return true;
@@ -297,7 +310,7 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
      * Set currently displayed bitmap
      */
     public void setBitmap(Bitmap image, boolean isNew) {
-        if (isNew) {
+        if (isNew && mActionStack != null) {
             mActionStack.clear();   // Clear action stack if new image
         }
         mCurrentBitmap = image;
