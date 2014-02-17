@@ -15,15 +15,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="042c1da3-0b10-465e-9d0d-07055d2c04ef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values/attrs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/preference_number_picker_dialog.xml" />
-      <change type="DELETED" beforePath="C:\Users\Tanner\School\493\Warpy\res\layout\dialog_mask_size.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Tanner\School\493\Warpy\src\ca\tannerrutgers\Warpy\dialogs\MaskSizePreference.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/preferences.xml" afterPath="$PROJECT_DIR$/res/xml/preferences.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageWarp.iws" />
@@ -206,7 +201,7 @@
       <file leaf-file-name="WarpyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="157" column="54" selection-start="5495" selection-end="5495" vertical-scroll-proportion="-0.12630014" vertical-offset="2754" max-vertical-offset="8262">
+            <state line="180" column="56" selection-start="6255" selection-end="6255" vertical-scroll-proportion="0.40416047" vertical-offset="2788" max-vertical-offset="8262">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2393#2780#0" expanded="true" />
@@ -712,6 +707,60 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="drawable-xhdpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageWarp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Warpy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable-mdpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageWarp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Warpy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable-ldpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ImageWarp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Warpy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="drawable-hdpi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -760,9 +809,11 @@
       <recent name="C:\Users\Tanner\Google Drive\School\5th\493\ImageWarp\res\drawable-xhdpi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Tanner\School\493\Warpy\res\drawable-ldpi" />
+      <recent name="C:\Users\Tanner\School\493\Warpy\res\drawable-xhdpi" />
+      <recent name="C:\Users\Tanner\School\493\Warpy\res\drawable-mdpi" />
+      <recent name="C:\Users\Tanner\School\493\Warpy\res\drawable-hdpi" />
       <recent name="C:\Users\Tanner\School\493\Warpy\src" />
-      <recent name="C:\Users\Tanner\School\493\Warpy\src\ca\tannerrutgers\Warpy\models" />
-      <recent name="C:\Users\Tanner\School\493\Warpy\src\ca\tannerrutgers\Warpy" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.WarpyActivity">
@@ -1018,7 +1069,11 @@
       <created>1392619469007</created>
       <updated>1392619469007</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Improved lifecycle behaviour">
+      <created>1392622079955</created>
+      <updated>1392622079955</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1076,7 +1131,8 @@
     <MESSAGE value="Implemented undo functionality (fixed size)" />
     <MESSAGE value="Implemented undo functionality (fixed size) - Fixed clear&#10;" />
     <MESSAGE value="Added undo size preference" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added undo size preference" />
+    <MESSAGE value="Improved lifecycle behaviour" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved lifecycle behaviour" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1485,7 +1541,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="54" selection-start="5495" selection-end="5495" vertical-scroll-proportion="-0.12630014" vertical-offset="2754" max-vertical-offset="8262">
+        <state line="180" column="56" selection-start="6255" selection-end="6255" vertical-scroll-proportion="0.40416047" vertical-offset="2788" max-vertical-offset="8262">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2393#2780#0" expanded="true" />
