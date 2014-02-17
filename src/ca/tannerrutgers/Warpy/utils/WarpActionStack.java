@@ -26,6 +26,17 @@ public class WarpActionStack<T> extends Stack<T> {
         this.maxSize = size;
     }
 
+    // Resize stack, removing old entries if needed
+    public void resize(int newSize) {
+        maxSize = newSize;
+        while (newSize < this.size()) {
+            remove(0);
+        }
+    }
+
+    /**
+     * Create file from passed bitmap and push Uri onto stack
+     */
     public T pushFromBitmap(Bitmap image) {
 
         // If the stack is too big, remove elements until it's the right size.
@@ -49,6 +60,9 @@ public class WarpActionStack<T> extends Stack<T> {
         return super.push((T) Uri.fromFile(tempFile));
     }
 
+    /**
+     * Remove item from stack at given location, deleting file in cache as well
+     */
     @Override
     public T remove(int location) {
         Uri fileUri = (Uri)super.get(location);
@@ -61,6 +75,9 @@ public class WarpActionStack<T> extends Stack<T> {
         return super.remove(location);
     }
 
+    /**
+     * Clear the stack, removing all cached files
+     */
     @Override
     public void clear() {
         while (this.size() > 0) {

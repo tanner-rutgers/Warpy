@@ -12,4 +12,6 @@
     <string name="error_save_image">Could not save image, please try again.</string>
     <string name="saving">Saving...</string>
     <string name="warping">Warping...</string>
+    <string name="pref_undo_size">Undo Size</string>
+    <string name="pref_undo_size_summary">Current value: 5</string>
 </resources>

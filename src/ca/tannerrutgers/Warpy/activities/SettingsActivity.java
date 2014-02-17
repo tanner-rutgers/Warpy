@@ -9,6 +9,9 @@ import ca.tannerrutgers.Warpy.R;
 * Created by Tanner on 24/01/14.
 */
 public class SettingsActivity extends PreferenceActivity {
+
+    public static final String KEY_PREF_UNDO_SIZE = "pref_undo_size";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

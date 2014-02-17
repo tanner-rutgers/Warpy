@@ -15,6 +15,7 @@ import android.view.*;
 import android.widget.ImageView;
 import ca.tannerrutgers.Warpy.R;
 import ca.tannerrutgers.Warpy.dialogs.DiscardImageWarningDialog;
+import ca.tannerrutgers.Warpy.dialogs.UndoSizePreference;
 import ca.tannerrutgers.Warpy.listeners.WarpGestureListener;
 import ca.tannerrutgers.Warpy.tasks.SaveImageTask;
 import ca.tannerrutgers.Warpy.utils.WarpActionStack;
@@ -77,7 +78,6 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
 
         // Initialize other state variables
         mIsCurrentImageSaved = false;
-        mActionStack = new WarpActionStack<Uri>(this, 5);
 
         // Determine behaviour of app (how it was launched)
         determineBehaviour();
@@ -113,6 +113,14 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Set/reset undo size based on preferences
+        int undoSize = PreferenceManager.getDefaultSharedPreferences(this).getInt(SettingsActivity.KEY_PREF_UNDO_SIZE, UndoSizePreference.DEFAULT_VALUE);
+        if (mActionStack == null) {
+            mActionStack = new WarpActionStack<Uri>(this, undoSize);
+        } else {
+            mActionStack.resize(undoSize);
+        }
     }
 
     /**
@@ -131,12 +139,46 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
         super.onDestroy();
     }
 
+    private static final String STATE_IMAGE = "currentImage";
+    private static final String STATE_STACK_SIZE = "actionStackSize";
+    private static final String STATE_STACK = "actionStack";
+    private static final String STATE_SAVED = "isImageSaved";
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the app's current state
+        savedInstanceState.putParcelable(STATE_IMAGE, mCurrentBitmap);
+        savedInstanceState.putInt(STATE_STACK_SIZE, mActionStack.size());
+        for (int i = 0; i < mActionStack.size(); i++) {
+            savedInstanceState.putString(STATE_STACK + i, mActionStack.get(i).toString());
+        }
+        savedInstanceState.putBoolean(STATE_SAVED, mIsCurrentImageSaved);
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // Restore state members from saved instance
+        mCurrentBitmap = savedInstanceState.getParcelable(STATE_IMAGE);
+        int stackSize = savedInstanceState.getInt(STATE_STACK_SIZE);
+        for (int i = 0; i < stackSize; i++) {
+            mActionStack.push(Uri.parse(savedInstanceState.getString(STATE_STACK + i)));
+        }
+        mIsCurrentImageSaved = savedInstanceState.getBoolean(STATE_SAVED);
+
+        updateViews();
+    }
+
     /**
      * Called when the back button is pressed
      */
     @Override
     public void onBackPressed() {
-        if (mCurrentImageUri != null && !mIsCurrentImageSaved) {
+        if (mCurrentBitmap != null && !mIsCurrentImageSaved) {
             showDiscardImageWarningDialog(REQUEST_BACK_PRESSED);
         } else {
             super.onBackPressed();
@@ -213,7 +255,7 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
                 return true;
             // Settings has been selected
             case R.id.menu_settings:
-//                launchPreferences();
+                launchPreferences();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -295,13 +337,13 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
     }
 
 
-//    /**
-//     * Called when settings is selected from menu
-//     */
-//    private void launchPreferences() {
-//        Intent preferencesIntent = new Intent(MainActivity.this, SettingsActivity.class);
-//        startActivity(preferencesIntent);
-//    }
+    /**
+     * Called when settings is selected from menu
+     */
+    private void launchPreferences() {
+        Intent preferencesIntent = new Intent(WarpyActivity.this, SettingsActivity.class);
+        startActivity(preferencesIntent);
+    }
 
 
     /**

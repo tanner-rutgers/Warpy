@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <ca.tannerrutgers.Warpy.dialogs.MaskSizePreference
-        android:key="pref_mask_size"
-        android:title="temp"
-        android:defaultValue=""/>
+    <ca.tannerrutgers.Warpy.dialogs.UndoSizePreference
+        android:key="pref_undo_size"
+        android:title="@string/pref_undo_size"
+        android:summary="@string/pref_undo_size_summary"
+        android:defaultValue="5" />
 </PreferenceScreen>
