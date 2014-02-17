@@ -170,7 +170,7 @@ public class UndoSizePreference extends DialogPreference {
         {
             mValue = value;
             persistInt(value);
-            setSummary(String.valueOf(value));
+            setSummary("Current value: " + String.valueOf(value));
             notifyChanged();
         }
     }
