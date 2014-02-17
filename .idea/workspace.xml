@@ -15,10 +15,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="042c1da3-0b10-465e-9d0d-07055d2c04ef" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/MIT.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/DiscardImageWarningDialog.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/DiscardImageWarningDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageBulge.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageBulge.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageKaleidoscope.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageKaleidoscope.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageRipple.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageRipple.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageWarp.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageWarp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/UndoSizePreference.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/UndoSizePreference.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/WarpTask.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/WarpTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" afterPath="$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ant.properties" afterPath="$PROJECT_DIR$/ant.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/arrays.xml" afterPath="$PROJECT_DIR$/res/values/arrays.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/attrs.xml" afterPath="$PROJECT_DIR$/res/values/attrs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/background.xml" afterPath="$PROJECT_DIR$/res/drawable-hdpi/background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-ldpi/background.xml" afterPath="$PROJECT_DIR$/res/drawable-ldpi/background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/background.xml" afterPath="$PROJECT_DIR$/res/drawable-mdpi/background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/background.xml" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/ids.xml" afterPath="$PROJECT_DIR$/res/values/ids.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/inset_background.xml" afterPath="$PROJECT_DIR$/res/drawable-hdpi/inset_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-ldpi/inset_background.xml" afterPath="$PROJECT_DIR$/res/drawable-ldpi/inset_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/inset_background.xml" afterPath="$PROJECT_DIR$/res/drawable-mdpi/inset_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/inset_background.xml" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/inset_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/menu_main.xml" afterPath="$PROJECT_DIR$/res/menu/menu_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/preference_number_picker_dialog.xml" afterPath="$PROJECT_DIR$/res/layout/preference_number_picker_dialog.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/preferences.xml" afterPath="$PROJECT_DIR$/res/xml/preferences.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ImageWarp.iws" />
@@ -75,7 +105,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java" line="66" class="ca.tannerrutgers.Warpy.tasks.SaveImageTask" package="ca.tannerrutgers.Warpy.tasks">
+      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java" line="50" class="ca.tannerrutgers.Warpy.tasks.SaveImageTask" package="ca.tannerrutgers.Warpy.tasks">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -90,7 +120,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java" line="117" class="ca.tannerrutgers.Warpy.tasks.SaveImageTask" package="ca.tannerrutgers.Warpy.tasks">
+      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java" line="99" class="ca.tannerrutgers.Warpy.tasks.SaveImageTask" package="ca.tannerrutgers.Warpy.tasks">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -105,7 +135,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageKaleidoscope.java" line="15" class="ca.tannerrutgers.Warpy.models.ImageKaleidoscope" package="ca.tannerrutgers.Warpy.models">
+      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageKaleidoscope.java" line="8" class="ca.tannerrutgers.Warpy.models.ImageKaleidoscope" package="ca.tannerrutgers.Warpy.models">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -120,7 +150,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" line="162" class="ca.tannerrutgers.Warpy.activities.WarpyActivity" package="ca.tannerrutgers.Warpy.activities">
+      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" line="186" class="ca.tannerrutgers.Warpy.activities.WarpyActivity" package="ca.tannerrutgers.Warpy.activities">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -135,7 +165,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" line="149" class="ca.tannerrutgers.Warpy.activities.WarpyActivity" package="ca.tannerrutgers.Warpy.activities">
+      <breakpoint url="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java" line="173" class="ca.tannerrutgers.Warpy.activities.WarpyActivity" package="ca.tannerrutgers.Warpy.activities">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -163,7 +193,7 @@
       <file leaf-file-name="ImageWarp.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageWarp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="26" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.0" vertical-offset="194" max-vertical-offset="867">
+            <state line="61" column="26" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.0" vertical-offset="602" max-vertical-offset="1275">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -174,7 +204,7 @@
       <file leaf-file-name="SettingsActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="67" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+            <state line="36" column="67" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1054">
               <folding />
             </state>
           </provider>
@@ -183,7 +213,7 @@
       <file leaf-file-name="project.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="17" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+            <state line="37" column="17" selection-start="1686" selection-end="1686" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="748">
               <folding />
             </state>
           </provider>
@@ -201,11 +231,11 @@
       <file leaf-file-name="WarpyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="180" column="56" selection-start="6255" selection-end="6255" vertical-scroll-proportion="0.40416047" vertical-offset="2788" max-vertical-offset="8262">
+            <state line="17" column="60" selection-start="875" selection-end="875" vertical-scroll-proportion="0.4294205" vertical-offset="0" max-vertical-offset="8670">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2393#2780#0" expanded="true" />
-                <element signature="e#2769#2770#0" expanded="true" />
+                <element signature="e#3541#3928#0" expanded="true" />
+                <element signature="e#3917#3918#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -214,16 +244,16 @@
       <file leaf-file-name="UndoSizePreference.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/UndoSizePreference.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="76" selection-start="551" selection-end="551" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="4437">
+            <state line="40" column="76" selection-start="1699" selection-end="1699" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="4845">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2934#2935#0" expanded="true" />
-                <element signature="e#2966#2967#0" expanded="true" />
-                <element signature="e#3241#3242#0" expanded="true" />
-                <element signature="e#3273#3274#0" expanded="true" />
-                <element signature="e#3545#3546#0" expanded="true" />
-                <element signature="e#3574#3575#0" expanded="true" />
-                <element signature="e#6284#6311#0" expanded="true" />
+                <element signature="e#4082#4083#0" expanded="true" />
+                <element signature="e#4114#4115#0" expanded="true" />
+                <element signature="e#4389#4390#0" expanded="true" />
+                <element signature="e#4421#4422#0" expanded="true" />
+                <element signature="e#4693#4694#0" expanded="true" />
+                <element signature="e#4722#4723#0" expanded="true" />
+                <element signature="e#7432#7459#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -232,7 +262,7 @@
       <file leaf-file-name="preferences.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/xml/preferences.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="32" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+            <state line="31" column="32" selection-start="1520" selection-end="1520" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="646">
               <folding />
             </state>
           </provider>
@@ -244,7 +274,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="24" selection-start="300" selection-end="300" vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="493">
+            <state line="32" column="24" selection-start="1474" selection-end="1474" vertical-scroll-proportion="-5.44" vertical-offset="408" max-vertical-offset="901">
               <folding />
             </state>
           </provider>
@@ -253,7 +283,7 @@
       <file leaf-file-name="SaveImageTask.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="51" selection-start="3042" selection-end="3042" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="2142">
+            <state line="121" column="51" selection-start="4190" selection-end="4190" vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="2550">
               <folding />
             </state>
           </provider>
@@ -262,10 +292,10 @@
       <file leaf-file-name="WarpActionStack.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="49" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="1581">
+            <state line="41" column="49" selection-start="1596" selection-end="1596" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1989">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1601#1652#0" expanded="true" />
+                <element signature="e#2749#2800#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -274,7 +304,7 @@
       <file leaf-file-name="ImageBulge.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageBulge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+            <state line="41" column="0" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="867">
               <folding />
             </state>
           </provider>
@@ -283,12 +313,12 @@
       <file leaf-file-name="WarpTask.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/WarpTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="36" selection-start="2286" selection-end="2286" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
+            <state line="107" column="36" selection-start="3434" selection-end="3434" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1989">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#977#1026#0" expanded="true" />
-                <element signature="e#1173#1348#0" expanded="true" />
-                <element signature="e#1337#1338#0" expanded="true" />
+                <element signature="e#2125#2174#0" expanded="true" />
+                <element signature="e#2321#2496#0" expanded="true" />
+                <element signature="e#2485#2486#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -297,7 +327,7 @@
       <file leaf-file-name="ant.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ant.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="80" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="391">
+            <state line="39" column="80" selection-start="1820" selection-end="1820" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="799">
               <folding />
             </state>
           </provider>
@@ -306,7 +336,7 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="39" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+            <state line="29" column="39" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="969">
               <folding />
             </state>
           </provider>
@@ -315,7 +345,7 @@
       <file leaf-file-name="WarpGestureListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="46" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0" vertical-offset="141" max-vertical-offset="1598">
+            <state line="53" column="46" selection-start="2087" selection-end="2087" vertical-scroll-proportion="0.0" vertical-offset="549" max-vertical-offset="2006">
               <folding />
             </state>
           </provider>
@@ -324,7 +354,7 @@
       <file leaf-file-name="ImageKaleidoscope.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageKaleidoscope.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="30" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+            <state line="40" column="30" selection-start="1569" selection-end="1569" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
@@ -333,7 +363,7 @@
       <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="58" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+            <state line="39" column="58" selection-start="2026" selection-end="2026" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="799">
               <folding />
             </state>
           </provider>
@@ -342,7 +372,7 @@
       <file leaf-file-name="ImageRipple.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageRipple.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+            <state line="34" column="13" selection-start="1409" selection-end="1409" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
@@ -795,7 +825,7 @@
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="imagewarp" />
-    <property name="options.lastSelected" value="editor.preferences.tabs" />
+    <property name="options.lastSelected" value="copyright" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -1073,7 +1103,11 @@
       <created>1392622079955</created>
       <updated>1392622079955</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Updated launcher icon">
+      <created>1392623472052</created>
+      <updated>1392623472052</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1132,7 +1166,8 @@
     <MESSAGE value="Implemented undo functionality (fixed size) - Fixed clear&#10;" />
     <MESSAGE value="Added undo size preference" />
     <MESSAGE value="Improved lifecycle behaviour" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved lifecycle behaviour" />
+    <MESSAGE value="Updated launcher icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated launcher icon" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1189,7 +1224,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ant.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="80" selection-start="696" selection-end="696" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+        <state line="39" column="80" selection-start="1820" selection-end="1820" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="799">
           <folding />
         </state>
       </provider>
@@ -1222,7 +1257,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="17" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+        <state line="37" column="17" selection-start="1686" selection-end="1686" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="748">
           <folding />
         </state>
       </provider>
@@ -1257,7 +1292,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageRipple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+        <state line="34" column="13" selection-start="1409" selection-end="1409" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
@@ -1318,15 +1353,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="49" selection-start="601" selection-end="601" vertical-scroll-proportion="0.4201521" vertical-offset="0" max-vertical-offset="526">
           <folding>
-            <element signature="e#537#551#0" expanded="true" />
-            <element signature="e#713#733#0" expanded="true" />
+            <element signature="e#1711#1725#0" expanded="true" />
+            <element signature="e#1887#1907#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageKaleidoscope.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="30" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+        <state line="40" column="30" selection-start="1569" selection-end="1569" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
@@ -1382,7 +1417,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/SaveImageTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="51" selection-start="3042" selection-end="3042" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="2142">
+        <state line="121" column="51" selection-start="4190" selection-end="4190" vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="2550">
           <folding />
         </state>
       </provider>
@@ -1410,33 +1445,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageBulge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+        <state line="41" column="0" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="867">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/tasks/WarpTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="36" selection-start="2286" selection-end="2286" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
+        <state line="107" column="36" selection-start="3434" selection-end="3434" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1989">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#977#1026#0" expanded="true" />
-            <element signature="e#1173#1348#0" expanded="true" />
-            <element signature="e#1337#1338#0" expanded="true" />
+            <element signature="e#2125#2174#0" expanded="true" />
+            <element signature="e#2321#2496#0" expanded="true" />
+            <element signature="e#2485#2486#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/listeners/WarpGestureListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="46" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0" vertical-offset="141" max-vertical-offset="1598">
+        <state line="53" column="46" selection-start="2087" selection-end="2087" vertical-scroll-proportion="0.0" vertical-offset="549" max-vertical-offset="2006">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="58" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+        <state line="39" column="58" selection-start="2026" selection-end="2026" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="799">
           <folding />
         </state>
       </provider>
@@ -1464,21 +1499,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/xml/preferences.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="32" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+        <state line="31" column="32" selection-start="1520" selection-end="1520" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="646">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="39" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+        <state line="29" column="39" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="969">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/models/ImageWarp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="26" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.0" vertical-offset="181" max-vertical-offset="867">
+        <state line="61" column="26" selection-start="2468" selection-end="2468" vertical-scroll-proportion="0.0" vertical-offset="602" max-vertical-offset="1275">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1498,23 +1533,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/dialogs/UndoSizePreference.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="76" selection-start="551" selection-end="551" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="4437">
+        <state line="40" column="76" selection-start="1699" selection-end="1699" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="4845">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2934#2935#0" expanded="true" />
-            <element signature="e#2966#2967#0" expanded="true" />
-            <element signature="e#3241#3242#0" expanded="true" />
-            <element signature="e#3273#3274#0" expanded="true" />
-            <element signature="e#3545#3546#0" expanded="true" />
-            <element signature="e#3574#3575#0" expanded="true" />
-            <element signature="e#6284#6311#0" expanded="true" />
+            <element signature="e#4082#4083#0" expanded="true" />
+            <element signature="e#4114#4115#0" expanded="true" />
+            <element signature="e#4389#4390#0" expanded="true" />
+            <element signature="e#4421#4422#0" expanded="true" />
+            <element signature="e#4693#4694#0" expanded="true" />
+            <element signature="e#4722#4723#0" expanded="true" />
+            <element signature="e#7432#7459#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="67" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+        <state line="36" column="67" selection-start="1511" selection-end="1511" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1054">
           <folding />
         </state>
       </provider>
@@ -1524,28 +1559,28 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24" selection-start="300" selection-end="300" vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="493">
+        <state line="32" column="24" selection-start="1474" selection-end="1474" vertical-scroll-proportion="-5.44" vertical-offset="408" max-vertical-offset="901">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/utils/WarpActionStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="49" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="1581">
+        <state line="41" column="49" selection-start="1596" selection-end="1596" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1989">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1601#1652#0" expanded="true" />
+            <element signature="e#2749#2800#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/tannerrutgers/Warpy/activities/WarpyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="56" selection-start="6255" selection-end="6255" vertical-scroll-proportion="0.40416047" vertical-offset="2788" max-vertical-offset="8262">
+        <state line="17" column="60" selection-start="875" selection-end="875" vertical-scroll-proportion="0.4294205" vertical-offset="0" max-vertical-offset="8670">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2393#2780#0" expanded="true" />
-            <element signature="e#2769#2770#0" expanded="true" />
+            <element signature="e#3541#3928#0" expanded="true" />
+            <element signature="e#3917#3918#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1556,6 +1591,18 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="Copyright.UI">
+        <settings>
+          <last-edited>MIT</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
