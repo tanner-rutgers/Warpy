@@ -17,6 +17,7 @@ import ca.tannerrutgers.Warpy.R;
 import ca.tannerrutgers.Warpy.dialogs.DiscardImageWarningDialog;
 import ca.tannerrutgers.Warpy.listeners.WarpGestureListener;
 import ca.tannerrutgers.Warpy.tasks.SaveImageTask;
+import ca.tannerrutgers.Warpy.utils.WarpActionStack;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,7 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
     private Uri mCurrentImageUri;
     private boolean mIsCurrentImageSaved;
     private Bitmap mCurrentBitmap;
+    private WarpActionStack<Uri> mActionStack;
 
     // View items
     private ImageView mImageView;
@@ -75,6 +77,7 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
 
         // Initialize other state variables
         mIsCurrentImageSaved = false;
+        mActionStack = new WarpActionStack<Uri>(this, 5);
 
         // Determine behaviour of app (how it was launched)
         determineBehaviour();
@@ -96,7 +99,7 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
                 Uri imageUri = intent.getData();
                 if (imageUri != null) {
                     mAppBehaviour = ACTION_EDIT;
-                    setBitmap(getImageFromUri(imageUri));
+                    setBitmap(getImageFromUri(imageUri), true);
                 }
             }
         } else {
@@ -177,6 +180,12 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
             save.setEnabled(mCurrentBitmap != null && !mIsCurrentImageSaved);
         }
 
+        // Set status of undo item
+        MenuItem undo = menu.findItem(R.id.menu_undo);
+        if (undo != null) {
+            undo.setEnabled(!mActionStack.isEmpty());
+        }
+
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -199,6 +208,9 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
             case R.id.menu_save_image:
                 saveCurrentImage();
                 return true;
+            case R.id.menu_undo:
+                undoSelected();
+                return true;
             // Settings has been selected
             case R.id.menu_settings:
 //                launchPreferences();
@@ -208,12 +220,21 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
         }
     }
 
-    public Bitmap getCurrentBitmap() {
-        return mCurrentBitmap;
+    /**
+     * Returns a copy of the current Bitmap
+     */
+    public Bitmap getCurrentBitmapCopy() {
+        return mCurrentBitmap.copy(mCurrentBitmap.getConfig(),true);
     }
 
-    public void setBitmap(Bitmap image) {
-        this.mCurrentBitmap = image;
+    /**
+     * Set currently displayed bitmap
+     */
+    public void setBitmap(Bitmap image, boolean isNew) {
+        if (isNew) {
+            mActionStack.clear();   // Clear action stack if new image
+        }
+        mCurrentBitmap = image;
         updateViews();
     }
 
@@ -237,6 +258,28 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
         } else {
             loadImage();
         }
+    }
+
+    /**
+     * Called when undo is selected from menu
+     */
+    private void undoSelected() {
+        mCurrentBitmap = getImageFromUri(mActionStack.pop());
+        updateViews();
+    }
+
+    /**
+     * Push new Uri onto action stack using Bitmap
+     */
+    public void pushToActionStack(Bitmap image) {
+        mActionStack.pushFromBitmap(image);
+    }
+
+    /**
+     * Pop most recent Uri from action stack
+     */
+    public Uri popFromActionStack() {
+        return mActionStack.pop();
     }
 
     /**
@@ -281,14 +324,14 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
             case REQUEST_LOAD_IMAGE:
                 if (resultCode == RESULT_OK) {
                     // Retrieve selected image and update views
-                    setBitmap(getImageFromUri(returnedIntent.getData()));
+                    setBitmap(getImageFromUri(returnedIntent.getData()), true);
                 }
                 break;
             // Request is image from camera
             case REQUEST_TAKE_PICTURE:
                 if (resultCode == RESULT_OK) {
                     // Retrieve taken picture and update views
-                    setBitmap(getImageFromUri(mCurrentImageUri));
+                    setBitmap(getImageFromUri(mCurrentImageUri), true);
                 }
         }
     }
@@ -367,6 +410,9 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
             mImageView.setBackground(null);
             mImageView.setImageBitmap(mCurrentBitmap);
             mIsCurrentImageSaved = false;
+        } else {
+            mImageView.setBackground(getResources().getDrawable(R.drawable.inset_background));
+            mIsCurrentImageSaved = false;
         }
         invalidateOptionsMenu();
     }
@@ -388,9 +434,5 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
         );
 
         return image;
-    }
-
-    public void debugLog(String message) {
-        Log.d(APP_TAG, message);
     }
 }

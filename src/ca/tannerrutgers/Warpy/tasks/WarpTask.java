@@ -55,6 +55,10 @@ public class WarpTask extends AsyncTask<ImageWarp, Void, Bitmap> {
             return null;
         }
 
+        // Save untouched image for undoing later
+        parent.pushToActionStack(warper.getImage());
+
+        // Warp image and return
         return warper.applyWarp();
     }
 
@@ -68,7 +72,7 @@ public class WarpTask extends AsyncTask<ImageWarp, Void, Bitmap> {
             dialog.dismiss();
         }
 
-        parent.setBitmap(warpedImage);
+        parent.setBitmap(warpedImage, false);
     }
 
     /**
@@ -77,6 +81,7 @@ public class WarpTask extends AsyncTask<ImageWarp, Void, Bitmap> {
     @Override
     protected void onCancelled() {
         warper.cancelWarp();
+        parent.popFromActionStack();
         super.onCancelled();
     }
 }

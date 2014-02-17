@@ -20,13 +20,14 @@ public class WarpGestureListener implements GestureDetector.OnGestureListener,
 
     private WarpyActivity mActivity;
 
+    private float mScaleFactor;
+
     public WarpGestureListener(WarpyActivity activity) {
         mActivity = activity;
     }
 
     @Override
     public boolean onDown(MotionEvent event) {
-        mActivity.debugLog( "onDown: " + event.toString());
         return true;
     }
 
@@ -59,7 +60,7 @@ public class WarpGestureListener implements GestureDetector.OnGestureListener,
     @Override
     public boolean onDoubleTap(MotionEvent event) {
         WarpTask warpTask = new WarpTask(mActivity);
-        warpTask.execute(new ImageRipple(mActivity, mActivity.getCurrentBitmap()));
+        warpTask.execute(new ImageRipple(mActivity, mActivity.getCurrentBitmapCopy()));
         return true;
     }
 
@@ -71,18 +72,14 @@ public class WarpGestureListener implements GestureDetector.OnGestureListener,
     @Override
     public void onLongPress(MotionEvent event) {
         WarpTask warpTask = new WarpTask(mActivity);
-        warpTask.execute(new ImageKaleidoscope(mActivity, mActivity.getCurrentBitmap()));
+        warpTask.execute(new ImageKaleidoscope(mActivity, mActivity.getCurrentBitmapCopy()));
     }
 
 
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
-        if (detector.getScaleFactor() > 1.0) {
-            WarpTask warpTask = new WarpTask(mActivity);
-            warpTask.execute(new ImageBulge(mActivity, mActivity.getCurrentBitmap()));
-            return true;
-        }
-        return false;
+        mScaleFactor = detector.getScaleFactor();
+        return true;
     }
 
     @Override
@@ -92,6 +89,9 @@ public class WarpGestureListener implements GestureDetector.OnGestureListener,
 
     @Override
     public void onScaleEnd(ScaleGestureDetector detector) {
-
+        if (mScaleFactor > 1.0) {
+            WarpTask warpTask = new WarpTask(mActivity);
+            warpTask.execute(new ImageBulge(mActivity, mActivity.getCurrentBitmapCopy()));
+        }
     }
 }

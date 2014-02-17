@@ -9,6 +9,10 @@
           android:title="@string/load_image"
           android:icon="@drawable/ic_menu_gallery"
           android:showAsAction="ifRoom" />
+    <item android:id="@+id/menu_undo"
+          android:title="@string/undo"
+          android:icon="@drawable/ic_menu_revert"
+          android:showAsAction="ifRoom" />
     <item android:id="@+id/menu_save_image"
           android:title="@string/save_image"
           android:icon="@drawable/ic_menu_save"
