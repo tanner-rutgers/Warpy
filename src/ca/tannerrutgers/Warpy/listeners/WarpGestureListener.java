@@ -1,9 +1,15 @@
 package ca.tannerrutgers.Warpy.listeners;
 
+import android.graphics.Bitmap;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import ca.tannerrutgers.Warpy.activities.WarpyActivity;
+import ca.tannerrutgers.Warpy.models.ImageBulge;
+import ca.tannerrutgers.Warpy.models.ImageKaleidoscope;
+import ca.tannerrutgers.Warpy.models.ImageRipple;
+import ca.tannerrutgers.Warpy.models.ImageWarp;
+import ca.tannerrutgers.Warpy.tasks.WarpTask;
 
 /**
  * Created by Tanner on 10/02/14.
@@ -42,8 +48,7 @@ public class WarpGestureListener implements GestureDetector.OnGestureListener,
     @Override
     public boolean onFling(MotionEvent event1, MotionEvent event2,
                            float velocityX, float velocityY) {
-        mActivity.debugLog( "onFling: " + event1.toString() + event2.toString());
-        return true;
+        return false;
     }
 
     @Override
@@ -53,7 +58,8 @@ public class WarpGestureListener implements GestureDetector.OnGestureListener,
 
     @Override
     public boolean onDoubleTap(MotionEvent event) {
-        mActivity.debugLog( "onDoubleTap: " + event.toString());
+        WarpTask warpTask = new WarpTask(mActivity);
+        warpTask.execute(new ImageRipple(mActivity, mActivity.getCurrentBitmap()));
         return true;
     }
 
@@ -64,14 +70,19 @@ public class WarpGestureListener implements GestureDetector.OnGestureListener,
 
     @Override
     public void onLongPress(MotionEvent event) {
-        mActivity.debugLog( "onLongPress: " + event.toString());
+        WarpTask warpTask = new WarpTask(mActivity);
+        warpTask.execute(new ImageKaleidoscope(mActivity, mActivity.getCurrentBitmap()));
     }
 
 
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
-        mActivity.debugLog("onScale: " + detector.toString());
-        return true;
+        if (detector.getScaleFactor() > 1.0) {
+            WarpTask warpTask = new WarpTask(mActivity);
+            warpTask.execute(new ImageBulge(mActivity, mActivity.getCurrentBitmap()));
+            return true;
+        }
+        return false;
     }
 
     @Override

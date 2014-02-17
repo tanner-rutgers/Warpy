@@ -65,8 +65,11 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
         mImageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent me) {
-                boolean returnVal = mScaleGestureDetector.onTouchEvent(me);
-                return mGestureDetector.onTouchEvent(me) || returnVal;
+                if (mCurrentBitmap != null) {
+                    boolean returnVal = mScaleGestureDetector.onTouchEvent(me);
+                    return mGestureDetector.onTouchEvent(me) || returnVal;
+                }
+                return false;
             }
         });
 
@@ -93,8 +96,7 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
                 Uri imageUri = intent.getData();
                 if (imageUri != null) {
                     mAppBehaviour = ACTION_EDIT;
-                    mCurrentBitmap = getImageFromUri(imageUri);
-                    updateViews();
+                    setBitmap(getImageFromUri(imageUri));
                 }
             }
         } else {
@@ -206,6 +208,15 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
         }
     }
 
+    public Bitmap getCurrentBitmap() {
+        return mCurrentBitmap;
+    }
+
+    public void setBitmap(Bitmap image) {
+        this.mCurrentBitmap = image;
+        updateViews();
+    }
+
     /**
      * Called when take picture is selected from menu
      */
@@ -270,16 +281,14 @@ public class WarpyActivity extends Activity implements DiscardImageWarningDialog
             case REQUEST_LOAD_IMAGE:
                 if (resultCode == RESULT_OK) {
                     // Retrieve selected image and update views
-                    mCurrentBitmap = getImageFromUri(returnedIntent.getData());
-                    updateViews();
+                    setBitmap(getImageFromUri(returnedIntent.getData()));
                 }
                 break;
             // Request is image from camera
             case REQUEST_TAKE_PICTURE:
                 if (resultCode == RESULT_OK) {
                     // Retrieve taken picture and update views
-                    mCurrentBitmap = getImageFromUri(mCurrentImageUri);
-                    updateViews();
+                    setBitmap(getImageFromUri(mCurrentImageUri));
                 }
         }
     }
